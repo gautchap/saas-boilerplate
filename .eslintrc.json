@@ -9,6 +9,7 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:github/recommended",
         "plugin:unicorn/recommended",
+        "plugin:tailwindcss/recommended",
         "next/core-web-vitals"
     ],
     "parser": "@typescript-eslint/parser",
