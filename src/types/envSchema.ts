@@ -23,8 +23,10 @@ const envServer = envSchema.safeParse({
 });
 
 if (!envServer.success) {
+    // eslint-disable-next-line no-console
     console.error(envServer.error.issues);
     throw new Error("There is an error with the server environment variables");
+    // eslint-disable-next-line no-unreachable, unicorn/no-process-exit
     process.exit(1);
 }
 
