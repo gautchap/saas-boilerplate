@@ -5,6 +5,8 @@ import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import SessionProvider from "@/context/next-auth-provider";
+import { ThemeProvider } from "@/context/theme-provider";
+import Navbar from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,12 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     return (
         <html lang="en">
             <body className={inter.className}>
-                <SessionProvider session={session}>{children}</SessionProvider>
+                <SessionProvider session={session}>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                        <Navbar />
+                        {children}
+                    </ThemeProvider>
+                </SessionProvider>
             </body>
         </html>
     );
