@@ -9,6 +9,8 @@ const envSchema = z.object({
     PORT: z.number().default(3000),
     NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
     DATABASE_URL: z.string().trim().min(1),
+    GITHUB_CLIENT_ID: z.string().trim().min(1),
+    GITHUB_CLIENT_SECRET: z.string().trim().min(1),
 });
 
 const envServer = envSchema.safeParse({
@@ -20,6 +22,8 @@ const envServer = envSchema.safeParse({
     PORT: process.env.PORT,
     NODE_ENV: process.env.NODE_ENV,
     DATABASE_URL: process.env.DATABASE_URL,
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
 });
 
 if (!envServer.success) {
