@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Poppins } from "next/font/google";
+import "@/app/globals.css";
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
@@ -9,7 +9,7 @@ import { ThemeProvider } from "@/context/theme-provider";
 import Navbar from "@/components/navbar";
 import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ weight: ["400"] });
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -24,11 +24,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     const session = await getServerSession(authOptions);
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={poppins.className}>
                 <SessionProvider session={session}>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                         <Navbar />
-                        {children}
+                        <main className="container">{children}</main>
                         <Toaster />
                     </ThemeProvider>
                 </SessionProvider>
