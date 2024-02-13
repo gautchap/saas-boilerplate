@@ -21,7 +21,7 @@ export default function Profile({ session }: { session: Session }) {
                             <AvatarImage src={session.user.image} className="rounded-full p-1" />
                         </Avatar>
                     ) : (
-                        <Avvvatars value={session.user.email} />
+                        <Avvvatars value={session.user.email.toUpperCase()} />
                     )}
                 </Button>
             </DropdownMenuTrigger>
