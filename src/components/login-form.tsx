@@ -10,6 +10,7 @@ import { DynamicIcon } from "@/components/ui/icons";
 import { EnvelopeOpenIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { useToast } from "@/components/ui/use-toast";
 import { signIn } from "next-auth/react";
+import { Dispatch, SetStateAction } from "react";
 
 const FormSchema = z.object({
     email: z.string().min(1, "Email must be not empty").email(),
@@ -17,7 +18,12 @@ const FormSchema = z.object({
 
 type FormType = z.infer<typeof FormSchema>;
 
-export function LoginForm({ providers }: { providers: string[] }) {
+type LoginFormProps = {
+    providers: string[];
+    setOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export function LoginForm({ providers, setOpen }: LoginFormProps) {
     const { toast } = useToast();
     const form = useForm<FormType>({
         resolver: zodResolver(FormSchema),
@@ -31,7 +37,7 @@ export function LoginForm({ providers }: { providers: string[] }) {
             title: "Email sent ! 📧✅",
             description: "Check your email for the sign in link.",
         });
-
+        setOpen(false);
         return value;
     };
 

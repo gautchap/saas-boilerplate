@@ -38,7 +38,7 @@ export function ModalLogin({ providers }: { providers: string[] }) {
                         <DialogTitle>Sign In</DialogTitle>
                         <DialogDescription>Enter your mail to connect</DialogDescription>
                     </DialogHeader>
-                    <LoginForm providers={providers} />
+                    <LoginForm providers={providers} setOpen={setOpen} />
                 </DialogContent>
             </Dialog>
         );
@@ -54,7 +54,7 @@ export function ModalLogin({ providers }: { providers: string[] }) {
                     <DrawerTitle>Sign In</DrawerTitle>
                     <DrawerDescription>Enter your mail to connect</DrawerDescription>
                 </DrawerHeader>
-                <LoginForm providers={providers} />
+                <LoginForm providers={providers} setOpen={setOpen} />
                 <DrawerFooter className="pt-2">
                     <DrawerClose asChild>
                         <Button variant="outline">Close</Button>
