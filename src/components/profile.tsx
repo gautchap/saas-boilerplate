@@ -16,9 +16,9 @@ export default function Profile({ session }: { session: Session }) {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button className="rounded-full bg-muted" variant="ghost" size="icon">
-                    {session.user?.image ? (
+                    {session.user.image ? (
                         <Avatar>
-                            <AvatarImage src={session.user?.image} className="p-1" />
+                            <AvatarImage src={session.user.image} className="rounded-full p-1" />
                         </Avatar>
                     ) : (
                         <Avvvatars value={session.user.email} />
