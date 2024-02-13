@@ -2,7 +2,10 @@
 
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { Archivo_Black } from "next/font/google";
 import Link from "next/link";
+
+const archivo_black = Archivo_Black({ weight: ["400"] });
 
 export default function MobileNav() {
     return (
@@ -13,7 +16,7 @@ export default function MobileNav() {
                 </SheetTrigger>
                 <SheetContent side="left">
                     <SheetHeader>
-                        <ul>
+                        <ul className={archivo_black.className}>
                             <li className="text-center">
                                 <SheetClose asChild>
                                     <Link href="/shop">shop</Link>

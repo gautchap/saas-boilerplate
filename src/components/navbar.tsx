@@ -6,6 +6,9 @@ import ThemeToggle from "@/components/theme-toggle";
 import { ModalLogin } from "./modal-login";
 import { getProviders } from "next-auth/react";
 import Profile from "@/components/profile";
+import { Archivo_Black } from "next/font/google";
+
+const archivo_black = Archivo_Black({ weight: ["400"] });
 
 export default async function Navbar() {
     const session = await getServerSession(authOptions);
@@ -14,7 +17,7 @@ export default async function Navbar() {
 
     return (
         <>
-            <div className="container flex items-center justify-between py-2">
+            <div className={`${archivo_black.className} container flex items-center justify-between py-2 text-xl`}>
                 <DesktopNav />
                 <MobileNav />
                 <div className="flex items-center gap-2">
