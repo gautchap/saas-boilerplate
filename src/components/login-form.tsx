@@ -33,12 +33,23 @@ export function LoginForm({ providers, setOpen }: LoginFormProps) {
     });
 
     const onSubmit = async (value: FormType) => {
-        toast({
-            title: "Email sent ! 📧✅",
-            description: "Check your email for the sign in link.",
-        });
-        setOpen(false);
-        return value;
+        try {
+            await signIn("email", {
+                email: value.email,
+                redirect: false,
+                callbackUrl: "/",
+            });
+            toast({
+                title: "Email sent ! 📧✅",
+                description: "Check your email for the sign in link.",
+            });
+            setOpen(false);
+        } catch {
+            toast({
+                title: "Error ! 📧❌",
+                description: "Something went wrong, please try again later.",
+            });
+        }
     };
 
     return (
