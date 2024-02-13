@@ -8,7 +8,7 @@ import { getProviders } from "next-auth/react";
 import Profile from "@/components/profile";
 import { Archivo_Black } from "next/font/google";
 
-const archivo_black = Archivo_Black({ weight: ["400"] });
+const archivo_black = Archivo_Black({ weight: ["400"], subsets: ["latin"] });
 
 export default async function Navbar() {
     const session = await getServerSession(authOptions);

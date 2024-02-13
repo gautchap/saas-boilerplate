@@ -5,7 +5,7 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Archivo_Black } from "next/font/google";
 import Link from "next/link";
 
-const archivo_black = Archivo_Black({ weight: ["400"] });
+const archivo_black = Archivo_Black({ weight: ["400"], subsets: ["latin"] });
 
 export default function MobileNav() {
     return (
