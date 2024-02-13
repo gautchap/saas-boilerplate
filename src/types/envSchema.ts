@@ -11,7 +11,11 @@ const envSchema = z.object({
     DATABASE_URL: z.string().trim().min(1),
     GITHUB_CLIENT_ID: z.string().trim().min(1),
     GITHUB_CLIENT_SECRET: z.string().trim().min(1),
-    RESEND_API_KEY: z.string().trim().min(1),
+    SMTP_HOST: z.string().trim().min(1),
+    SMTP_PORT: z.number().default(587),
+    SMTP_USER: z.string().trim().min(1),
+    EMAIL_FROM: z.string().trim().min(1).email(),
+    SMTP_PASSWORD: z.string().trim().min(1),
 });
 
 const envServer = envSchema.safeParse({
@@ -25,7 +29,11 @@ const envServer = envSchema.safeParse({
     DATABASE_URL: process.env.DATABASE_URL,
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
-    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: process.env.SMTP_PORT,
+    SMTP_USER: process.env.SMTP_USER,
+    EMAIL_FROM: process.env.EMAIL_FROM,
+    SMTP_PASSWORD: process.env.SMTP_PASSWORD,
 });
 
 if (!envServer.success) {
