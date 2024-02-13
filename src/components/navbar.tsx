@@ -13,7 +13,8 @@ const archivo_black = Archivo_Black({ weight: ["400"] });
 export default async function Navbar() {
     const session = await getServerSession(authOptions);
     const AllProviders = await getProviders();
-    const providers = Object.keys(AllProviders || {});
+    const array_providers = Object.keys(AllProviders || {});
+    const providers = array_providers?.filter((provider) => provider !== "email");
 
     return (
         <>
